@@ -1,0 +1,20 @@
+#ServerName#startServer mode off/on#Dependency servers(comma separated)#exec command #PreProcessor script names(comma separated)#AutorestartInCase of process termination#Dependents list(comma separated)#WaitTime before going for next server#
+#NOTE: For Distributed Environment, Remove appropriate Dependencies and Dependents.
+
+HotStandby#true##/usr/java/bin/java -Xms578m -Xmx2007m -server -Dcom.sun.management.jmxremote.port=10005 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -server -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8502 -Duser.dir=/opt/ems/release -cp /opt/ems/release/data/conf:/opt/ems/release/ems.jar com.tejas.ems.hotstandby.HotStandbyMain##true##30
+
+NamingService#false##/usr/java/bin/java -Xms578m -Xmx2007m -server -Duser.dir=/opt/ems/release -Dorg.omg.CORBA.ORBClass=org.jacorb.orb.ORB -Dorg.omg.CORBA.ORBSingletonClass=org.jacorb.orb.ORBSingleton -cp /opt/ems/release/data/conf:/opt/ems/release/ems.jar org.jacorb.naming.NameServer -DOAPort=20900 -Djacorb.net.server_socket_factory.port.min=20900 -Djacorb.net.server_socket_factory.port.max=20900 -Djacorb.net.server_socket_factory=org.jacorb.orb.factory.PortRangeServerSocketFactory##true#NotifyService,ActiveMQ#5
+
+ClearChannel#false##/opt/ems/release/bin/Clear_Channel.sh##false##5
+
+NotifyService#false#NamingService#/usr/java/bin/java -Xms1156m -Xmx4015m -XX:OnOutOfMemoryError=/opt/ems/release/bin/killNotify.sh -XX:MaxHeapFreeRatio=50 -XX:NewRatio=3 -Dcom.sun.management.jmxremote.port=10000  -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -server -Duser.dir=/opt/ems/release -Dorg.omg.CORBA.ORBClass=org.jacorb.orb.ORB -Dorg.omg.CORBA.ORBSingletonClass=org.jacorb.orb.ORBSingleton -cp /opt/ems/release/data/conf:/opt/ems/release/ems.jar org.jacorb.notification.ConsoleMain -registerName NotifyEventChannelFactory#ClearChannel#true#EMSDomain#15
+
+ActiveMQ#false#NamingService#/opt/ems/release/apache-activemq-5.13.0/bin/activemq startInSameProcess -Xms4015m -Xmx4015m ##true#EMSDomain#15
+
+EMSDomain#false#NamingService,NotifyService,ActiveMQ#/usr/java/bin/java -Xms1002m -Xmx16062m -XX:PermSize=401m -XX:MaxPermSize=1005m  -XX:MaxHeapFreeRatio=50 -XX:NewRatio=3 -Dcom.sun.management.jmxremote.port=10001  -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -server -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8501 -Xnoagent -Djava.compiler=NONE -Duser.dir=/opt/ems/release -cp /opt/ems/release/data/conf:/opt/ems/release/ems.jar com.tejas.ems.server.main.TejEMSServer DBDomain EMSCommonDomain##true#PerformanceDomain,TMFDomain#120
+
+PerformanceDomain#false#NamingService,NotifyService#/usr/java/bin/java -Xms1002m -Xmx16062m -XX:PermSize=401m -XX:MaxPermSize=1005m  -XX:MaxHeapFreeRatio=50 -XX:NewRatio=3 -Dcom.sun.management.jmxremote.port=10004  -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -server -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8560 -Xnoagent -Djava.compiler=NONE -Duser.dir=/opt/ems/release -cp /opt/ems/release/data/conf:/opt/ems/release/ems.jar com.tejas.ems.server.main.TejEMSServer PerformanceDomain#EMSDomain#true#TMFDomain#30
+
+TMFDomain#false#NamingService,NotifyService,ActiveMQ#/usr/java/bin/java -Xms1002m -Xmx8031m -XX:PermSize=256m -XX:MaxPermSize=1002m  -XX:MaxHeapFreeRatio=50 -XX:NewRatio=3 -Dcom.sun.management.jmxremote.port=10003 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -server -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8552 -Xnoagent -Djava.compiler=NONE -Duser.dir=/opt/ems/release -cp /opt/ems/release/data/conf:/opt/ems/release/ems.jar:/opt/ems/release/libs/esm-adaptor.jar com.tejas.ems.server.main.TejEMSServer TMFDomain#EMSDomain#true##30
+
+

@@ -1,0 +1,35 @@
+################
+#
+# seqno#processName#StartServerMode#DependencyProcessList#command#AutoRestart#DependentServerList
+#
+# Description:
+# 		seqno: 		 	Application sequence no. Using this no. process will be started
+#		processName: 	 	This a unique application Name to identify the process.
+#		StartServerMode: 	This flag will be used start a process at the time of EMS startup. 
+#			 	 	This flag is used in case of HotStandby feature is enabled.
+#			 	 	Default values are true or false.			 
+#		ProcessDependency:  	This attribute holds the dependency process name which needs 
+#				        to be running before starting the process.
+#		command:		This exact command to start a process.
+#		autoRestart:		This flag will be used to start a process if it dies abruptly.		
+#		dependentProcess:	This attribute will be used to start a process when a process terminates 
+#					abruptly.
+#		endPoint:		This attibute will be used to run the process on endPoint(or machine) IP sepecfied.
+#		monitorPort:		This attribute will be used to monitor the process status (running/stoped)
+#
+#################################################################################################################
+HotStandby#0#true##/usr/java/bin/java -server -Dcom.sun.management.jmxremote.port=10005 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -server -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8502 -Duser.dir=/opt/ems/release -cp /opt/ems/release/data/conf:/opt/ems/release/ems.jar com.tejas.ems.hotstandby.HotStandbyMain#true##127.0.0.1#20906
+
+NamingService#1#false##/usr/java/bin/java -server -Duser.dir=/opt/ems/release -Dorg.omg.CORBA.ORBClass=org.jacorb.orb.ORB  -DOAPort=20900 -Djacorb.net.server_socket_factory.port.min=20900 -Djacorb.net.server_socket_factory.port.max=20900 -Djacorb.net.server_socket_factory=org.jacorb.orb.factory.PortRangeServerSocketFactory -Dorg.omg.CORBA.ORBSingletonClass=org.jacorb.orb.ORBSingleton -cp /opt/ems/release/data/conf:/opt/ems/release/ems.jar org.jacorb.naming.NameServer#true#NotifyService,ActiveMQ#localhost#20900
+
+NotifyService#2#false#NamingService#/usr/java/bin/java -Xms64m -Xmx512m -XX:OnOutOfMemoryError=/opt/ems/release/bin/killNotify.sh -XX:MaxHeapFreeRatio=50 -XX:NewRatio=3 -Dcom.sun.management.jmxremote.port=10000  -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -server -Duser.dir=/opt/ems/release -Dorg.omg.CORBA.ORBClass=org.jacorb.orb.ORB -Dorg.omg.CORBA.ORBSingletonClass=org.jacorb.orb.ORBSingleton -DOAPort=20901 -cp /opt/ems/release/data/conf:/opt/ems/release/ems.jar org.jacorb.notification.ConsoleMain -registerName NotifyEventChannelFactory#true#EMSDomain#localhost#20901
+
+ActiveMQ#3#false#NamingService#/opt/ems/release/apache-activemq-5.13.0/bin/activemq startInSameProcess#true#EMSDomain#localhost#20906
+
+EMSDomain#4#false#NotifyService,ActiveMQ#/usr/java/bin/java -Xms256m -Xmx1024m -XX:MaxHeapFreeRatio=50 -XX:NewRatio=3 -Dcom.sun.management.jmxremote.port=10001  -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -server -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8501 -Xnoagent -Djava.compiler=NONE -Duser.dir=/opt/ems/release -DOAPort=20902 -cp /opt/ems/release/data/conf:/opt/ems/release/ems.jar com.tejas.ems.server.main.TejEMSServer DBDomain EMSCommonDomain#true#PerformanceDomain,TMFDomain#localhost#20902
+
+#EMSCommonDomain#5#false#DBDomain#/usr/java/bin/java -Xms256m -Xmx1024m -XX:MaxHeapFreeRatio=50 -XX:NewRatio=3 -Dcom.sun.management.jmxremote.port=10002 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -server -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8555 -Xnoagent -Djava.compiler=NONE -Duser.dir=/opt/ems/release -DOAPort=20903 -cp /opt/ems/release/data/conf:/opt/ems/release/ems.jar com.tejas.ems.server.main.TejEMSServer EMSCommonDomain#true#PerformanceDomain,TMFDomain#localhost#20903
+
+PerformanceDomain#6#false#EMSDomain#/usr/java/bin/java -Xms256m -Xmx1024m -XX:MaxHeapFreeRatio=50 -XX:NewRatio=3 -Dcom.sun.management.jmxremote.port=10004  -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -server -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8560 -Xnoagent -Djava.compiler=NONE -Duser.dir=/opt/ems/release -DOAPort=20905 -cp /opt/ems/release/data/conf:/opt/ems/release/ems.jar com.tejas.ems.server.main.TejEMSServer PerformanceDomain#true##localhost#20905
+
+TMFDomain#7#false#EMSDomain#/usr/java/bin/java -Xms256m -Xmx1024m -XX:MaxHeapFreeRatio=50 -XX:NewRatio=3 -Dcom.sun.management.jmxremote.port=10003  -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -server -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8552 -Xnoagent -Djava.compiler=NONE -Duser.dir=/opt/ems/release -DOAPort=20904 -cp /opt/ems/release/data/conf:/opt/ems/release/ems.jar:/opt/ems/release/libs/esm-adaptor.jar com.tejas.ems.server.main.TejEMSServer TMFDomain#true##localhost#20904

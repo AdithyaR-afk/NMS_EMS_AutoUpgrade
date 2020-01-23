@@ -1,0 +1,1363 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Applications type="EMS">
+	<Installation mode="STANDALONE" processing_mode="memselection">
+
+		<!-- 4 GB Machine with Standalone installation/Default Calculations -->
+		<Configuration id="4GB Machine Configuration" order="1" memselection="4 gb" memoryband="3-4 gb" osreservation="0kb" mysqlreservation="0mb" divider="1" disablereservation="false">
+			<Application name="NAMING_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.6</MinHeapMemoryWt>
+				<MinHeapReq>32mb</MinHeapReq>
+				<MaxHeapBarLine>64mb</MaxHeapBarLine>
+				<MinPermWt>1.6</MinPermWt>
+				<MaxPermWt>3.2</MaxPermWt>
+				<MaxPermBarLine>64mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="ACTIVE_MQ" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>12.5</MinHeapMemoryWt>
+				<MinHeapReq>64mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>1.6</MinPermWt>
+				<MaxPermWt>3.2</MaxPermWt>
+				<MaxPermBarLine>64mb</MaxPermBarLine>
+			</Application>
+			
+			
+			
+			<Application name="NOTIFY_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.6</MinHeapMemoryWt>
+				<MinHeapReq>32mb</MinHeapReq>
+				<MaxHeapBarLine>64mb</MaxHeapBarLine>
+				<MinPermWt>1.6</MinPermWt>
+				<MaxPermWt>3.2</MaxPermWt>
+				<MaxPermBarLine>64mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>6.25</MinHeapMemoryWt>
+				<MinHeapReq>64mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>3.25</MinPermWt>
+				<MaxPermWt>6.25</MaxPermWt>
+				<MaxPermBarLine>64mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_COMMON_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>6.25</MinHeapMemoryWt>
+				<MinHeapReq>64mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>3.25</MinPermWt>
+				<MaxPermWt>6.25</MaxPermWt>
+				<MaxPermBarLine>64mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="PERF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>6.25</MinHeapMemoryWt>
+				<MinHeapReq>64mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>3.25</MinPermWt>
+				<MaxPermWt>6.25</MaxPermWt>
+				<MaxPermBarLine>64mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="TMF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>6.25</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>1.6</MinPermWt>
+				<MaxPermWt>6.3</MaxPermWt>
+				<MaxPermBarLine>200mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="HOTSTANDBY_SERVER" enabled="false">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.6</MinHeapMemoryWt>
+				<MinHeapReq>32mb</MinHeapReq>
+				<MaxHeapBarLine>32mb</MaxHeapBarLine>
+				<MinPermWt>1.6</MinPermWt>
+				<MaxPermWt>3.2</MaxPermWt>
+				<MaxPermBarLine>32mb</MaxPermBarLine>
+			</Application>
+		</Configuration>
+
+
+
+		<!-- 2 GB Machine with Standalone installation/Default Calculations -->
+		<Configuration id="2GB Machine Configuration" order="2" memselection="2 gb" memoryband="1-2 gb" osreservation="0kb" mysqlreservation="0mb" divider="1" disablereservation="false">
+			<Application name="NAMING_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.13</MinHeapMemoryWt>
+				<MinHeapReq>32mb</MinHeapReq>
+				<MaxHeapBarLine>64mb</MaxHeapBarLine>
+				<MinPermWt>3.8</MinPermWt>
+				<MaxPermWt>6.4</MaxPermWt>
+				<MaxPermBarLine>64mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="ACTIVE_MQ" enabled="false">
+				<MaxHeapMemoryWt>25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>25</MinHeapMemoryWt>
+				<MinHeapReq>64mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>3.8</MinPermWt>
+				<MaxPermWt>6.4</MaxPermWt>
+				<MaxPermBarLine>64mb</MaxPermBarLine>
+			</Application>
+			
+			
+			
+			<Application name="NOTIFY_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.6</MinHeapMemoryWt>
+				<MinHeapReq>32mb</MinHeapReq>
+				<MaxHeapBarLine>64mb</MaxHeapBarLine>
+				<MinPermWt>3.8</MinPermWt>
+				<MaxPermWt>6.4</MaxPermWt>
+				<MaxPermBarLine>64mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>15</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>12.5</MinHeapMemoryWt>
+				<MinHeapReq>64mb</MinHeapReq>
+				<MaxHeapBarLine>240mb</MaxHeapBarLine>
+				<MinPermWt>6.5</MinPermWt>
+				<MaxPermWt>12.5</MaxPermWt>
+				<MaxPermBarLine>64mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_COMMON_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>15</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>12.5</MinHeapMemoryWt>
+				<MinHeapReq>64mb</MinHeapReq>
+				<MaxHeapBarLine>240mb</MaxHeapBarLine>
+				<MinPermWt>6.5</MinPermWt>
+				<MaxPermWt>12.5</MaxPermWt>
+				<MaxPermBarLine>64mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="PERF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>15</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>12.5</MinHeapMemoryWt>
+				<MinHeapReq>64mb</MinHeapReq>
+				<MaxHeapBarLine>240mb</MaxHeapBarLine>
+				<MinPermWt>3.12</MinPermWt>
+				<MaxPermWt>6.25</MaxPermWt>
+				<MaxPermBarLine>64mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="TMF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>12.5</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>3.12</MinPermWt>
+				<MaxPermWt>12.5</MaxPermWt>
+				<MaxPermBarLine>200mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="HOTSTANDBY_SERVER" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.13</MinHeapMemoryWt>
+				<MinHeapReq>32mb</MinHeapReq>
+				<MaxHeapBarLine>64mb</MaxHeapBarLine>
+				<MinPermWt>3.8</MinPermWt>
+				<MaxPermWt>6.4</MaxPermWt>
+				<MaxPermBarLine>64mb</MaxPermBarLine>
+			</Application>
+		</Configuration>
+
+
+
+
+		<!-- 8 GB Machine with Standalone installation/Default Calculations -->
+		<Configuration id="8GB Machine Configuration" order="3" memselection="8 gb" memoryband="6-8 gb" osreservation="0kb" mysqlreservation="0mb" divider="1" disablereservation="false">
+			<Application name="NAMING_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>1.5</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="ACTIVE_MQ" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>12.5</MinHeapMemoryWt>
+				<MinHeapReq>256mb</MinHeapReq>
+				<MaxHeapBarLine>512mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			
+			<Application name="NOTIFY_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.6</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>800mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_COMMON_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>500mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="PERF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>800mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="TMF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>.80</MinPermWt>
+				<MaxPermWt>3.12</MaxPermWt>
+				<MaxPermBarLine>200mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="HOTSTANDBY_SERVER" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>1.5</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+		</Configuration>
+		
+				<!-- 16 GB Machine with Standalone installation/Default Calculations -->
+		<Configuration id="16GB Machine Configuration" order="4" memselection="16 gb" memoryband="8-16 gb" osreservation="0kb" mysqlreservation="0mb" divider="1" disablereservation="false">
+			<Application name="NAMING_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>128mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="ACTIVE_MQ" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>6.5</MinHeapMemoryWt>
+				<MinHeapReq>256mb</MinHeapReq>
+				<MaxHeapBarLine>512mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			
+			<Application name="NOTIFY_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.6</MinHeapMemoryWt>
+				<MinHeapReq>128mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>1400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_COMMON_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>1000mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="PERF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>1400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="TMF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="HOTSTANDBY_SERVER" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>128mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+		</Configuration>
+
+				<!-- 32 GB Machine with Standalone installation/Default Calculations -->
+		<Configuration id="32GB Machine Configuration" order="5" memselection="32 gb" memoryband="16-32 gb" osreservation="0kb" mysqlreservation="0mb" divider="1" disablereservation="false">
+			<Application name="NAMING_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>128mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="ACTIVE_MQ" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>6.5</MinHeapMemoryWt>
+				<MinHeapReq>256mb</MinHeapReq>
+				<MaxHeapBarLine>512mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			
+			<Application name="NOTIFY_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.6</MinHeapMemoryWt>
+				<MinHeapReq>128mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>1400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_COMMON_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>1000mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="PERF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>1400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="TMF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="HOTSTANDBY_SERVER" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>128mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+		</Configuration>
+		
+				<!-- 40 GB Machine with Standalone installation/Default Calculations -->
+		<Configuration id="40GB Machine Configuration" order="6" memselection="40 gb" memoryband="32-40 gb" osreservation="0kb" mysqlreservation="0mb" divider="1" disablereservation="false">
+			<Application name="NAMING_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>128mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="ACTIVE_MQ" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>6.5</MinHeapMemoryWt>
+				<MinHeapReq>256mb</MinHeapReq>
+				<MaxHeapBarLine>512mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			
+			<Application name="NOTIFY_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.6</MinHeapMemoryWt>
+				<MinHeapReq>128mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>1400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_COMMON_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>1000mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="PERF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>1400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="TMF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="HOTSTANDBY_SERVER" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>128mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+		</Configuration>
+
+				<!-- 64 GB Machine with Standalone installation/Default Calculations -->
+		<Configuration id="64GB Machine Configuration" order="7" memselection="64 gb" memoryband="40-64 gb" osreservation="0kb" mysqlreservation="0mb" divider="1" disablereservation="false">
+			<Application name="NAMING_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>128mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="ACTIVE_MQ" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>6.5</MinHeapMemoryWt>
+				<MinHeapReq>256mb</MinHeapReq>
+				<MaxHeapBarLine>512mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			
+			<Application name="NOTIFY_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.6</MinHeapMemoryWt>
+				<MinHeapReq>128mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>1400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_COMMON_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>1000mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="PERF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>1400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="TMF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="HOTSTANDBY_SERVER" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>128mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+		</Configuration>
+
+				<!-- 72 GB Machine with Standalone installation/Default Calculations -->
+		<Configuration id="72GB Machine Configuration" order="8" memselection="72 gb" memoryband="64-72 gb" osreservation="0kb" mysqlreservation="0mb" divider="1" disablereservation="false">
+			<Application name="NAMING_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>128mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="ACTIVE_MQ" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>6.5</MinHeapMemoryWt>
+				<MinHeapReq>256mb</MinHeapReq>
+				<MaxHeapBarLine>512mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			
+			<Application name="NOTIFY_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.6</MinHeapMemoryWt>
+				<MinHeapReq>128mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>1400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_COMMON_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>1000mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="PERF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>1400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="TMF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="HOTSTANDBY_SERVER" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>128mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>.78</MinPermWt>
+				<MaxPermWt>1.6</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+		</Configuration>		
+
+	</Installation>
+
+
+
+	<Installation mode="CORESIDENCY" processing_mode="memselection">
+
+		<!-- 2 GB Machine with Coresidency installation/Default Calculations -->
+		<Configuration id="2GB Machine Configuration" order="1" memselection="4 gb" memoryband="1-2 gb" osreservation="0kb" mysqlreservation="0mb" divider="2" disablereservation="false">
+			<Application name="NAMING_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.13</MinHeapMemoryWt>
+				<MinHeapReq>20mb</MinHeapReq>
+				<MaxHeapBarLine>50mb</MaxHeapBarLine>
+				<MinPermWt>3.8</MinPermWt>
+				<MaxPermWt>6.4</MaxPermWt>
+				<MaxPermBarLine>50mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="ACTIVE_MQ" enabled="false">
+				<MaxHeapMemoryWt>25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>25</MinHeapMemoryWt>
+				<MinHeapReq>64mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>3.8</MinPermWt>
+				<MaxPermWt>6.4</MaxPermWt>
+				<MaxPermBarLine>50mb</MaxPermBarLine>
+			</Application>
+			
+			
+			
+			<Application name="NOTIFY_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.6</MinHeapMemoryWt>
+				<MinHeapReq>20mb</MinHeapReq>
+				<MaxHeapBarLine>32mb</MaxHeapBarLine>
+				<MinPermWt>3.8</MinPermWt>
+				<MaxPermWt>6.4</MaxPermWt>
+				<MaxPermBarLine>50mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>15</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>12.5</MinHeapMemoryWt>
+				<MinHeapReq>64mb</MinHeapReq>
+				<MaxHeapBarLine>128mb</MaxHeapBarLine>
+				<MinPermWt>6.5</MinPermWt>
+				<MaxPermWt>12.5</MaxPermWt>
+				<MaxPermBarLine>64mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_COMMON_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>15</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>12.5</MinHeapMemoryWt>
+				<MinHeapReq>64mb</MinHeapReq>
+				<MaxHeapBarLine>128mb</MaxHeapBarLine>
+				<MinPermWt>6.5</MinPermWt>
+				<MaxPermWt>12.5</MaxPermWt>
+				<MaxPermBarLine>64mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="PERF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>15</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>12.5</MinHeapMemoryWt>
+				<MinHeapReq>64mb</MinHeapReq>
+				<MaxHeapBarLine>128mb</MaxHeapBarLine>
+				<MinPermWt>3.12</MinPermWt>
+				<MaxPermWt>6.25</MaxPermWt>
+				<MaxPermBarLine>32mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="TMF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>12.5</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>100mb</MaxHeapBarLine>
+				<MinPermWt>3.12</MinPermWt>
+				<MaxPermWt>12.5</MaxPermWt>
+				<MaxPermBarLine>32mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="HOTSTANDBY_SERVER" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.13</MinHeapMemoryWt>
+				<MinHeapReq>20mb</MinHeapReq>
+				<MaxHeapBarLine>32mb</MaxHeapBarLine>
+				<MinPermWt>3.8</MinPermWt>
+				<MaxPermWt>6.4</MaxPermWt>
+				<MaxPermBarLine>50mb</MaxPermBarLine>
+			</Application>
+		</Configuration>
+
+
+
+
+		<!-- 4 GB Machine with Coresidency installation/Default Calculations -->
+		<Configuration id="4GB Machine Configuration" order="2" memselection="8 gb" memoryband="2-4 gb" osreservation="0kb" mysqlreservation="0mb" divider="2" disablereservation="false">
+						<Application name="NAMING_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.6</MinHeapMemoryWt>
+				<MinHeapReq>32mb</MinHeapReq>
+				<MaxHeapBarLine>64mb</MaxHeapBarLine>
+				<MinPermWt>1.6</MinPermWt>
+				<MaxPermWt>3.2</MaxPermWt>
+				<MaxPermBarLine>64mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="ACTIVE_MQ" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>12.5</MinHeapMemoryWt>
+				<MinHeapReq>64mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>1.6</MinPermWt>
+				<MaxPermWt>3.2</MaxPermWt>
+				<MaxPermBarLine>64mb</MaxPermBarLine>
+			</Application>
+			
+			
+			
+			<Application name="NOTIFY_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.6</MinHeapMemoryWt>
+				<MinHeapReq>32mb</MinHeapReq>
+				<MaxHeapBarLine>64mb</MaxHeapBarLine>
+				<MinPermWt>1.6</MinPermWt>
+				<MaxPermWt>3.2</MaxPermWt>
+				<MaxPermBarLine>64mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>6.25</MinHeapMemoryWt>
+				<MinHeapReq>64mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>3.25</MinPermWt>
+				<MaxPermWt>6.25</MaxPermWt>
+				<MaxPermBarLine>64mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_COMMON_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>6.25</MinHeapMemoryWt>
+				<MinHeapReq>64mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>3.25</MinPermWt>
+				<MaxPermWt>6.25</MaxPermWt>
+				<MaxPermBarLine>64mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="PERF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>6.25</MinHeapMemoryWt>
+				<MinHeapReq>64mb</MinHeapReq>
+				<MaxHeapBarLine>400mb</MaxHeapBarLine>
+				<MinPermWt>3.25</MinPermWt>
+				<MaxPermWt>6.25</MaxPermWt>
+				<MaxPermBarLine>64mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="TMF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>6.25</MinHeapMemoryWt>
+				<MinHeapReq>200mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>1.6</MinPermWt>
+				<MaxPermWt>6.3</MaxPermWt>
+				<MaxPermBarLine>200mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="HOTSTANDBY_SERVER" enabled="false">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.6</MinHeapMemoryWt>
+				<MinHeapReq>32mb</MinHeapReq>
+				<MaxHeapBarLine>32mb</MaxHeapBarLine>
+				<MinPermWt>1.6</MinPermWt>
+				<MaxPermWt>3.2</MaxPermWt>
+				<MaxPermBarLine>32mb</MaxPermBarLine>
+			</Application>
+		</Configuration>
+		
+		
+		
+		
+		
+				<!-- 8 GB Machine with Coresidency installation/Default Calculations -->
+		<Configuration id="8GB Machine Configuration" order="3" memselection="16 gb" memoryband="4-8 gb" osreservation="0kb" mysqlreservation="0mb" divider="2" disablereservation="false">
+			<Application name="NAMING_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>50mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>1.5</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="ACTIVE_MQ" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>12.5</MinHeapMemoryWt>
+				<MinHeapReq>256mb</MinHeapReq>
+				<MaxHeapBarLine>500mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			
+			<Application name="NOTIFY_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.6</MinHeapMemoryWt>
+				<MinHeapReq>50mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>800mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_COMMON_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>500mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="PERF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>800mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="TMF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>.80</MinPermWt>
+				<MaxPermWt>3.12</MaxPermWt>
+				<MaxPermBarLine>200mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="HOTSTANDBY_SERVER" enabled="false">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>50mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>1.5</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+		</Configuration>
+		
+						<!-- 16 GB Machine with Coresidency installation/Default Calculations -->
+		<Configuration id="16GB Machine Configuration" order="4" memselection="32 gb" memoryband="8-16 gb" osreservation="0kb" mysqlreservation="0mb" divider="2" disablereservation="false">
+			<Application name="NAMING_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>50mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>1.5</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="ACTIVE_MQ" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>12.5</MinHeapMemoryWt>
+				<MinHeapReq>256mb</MinHeapReq>
+				<MaxHeapBarLine>500mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			
+			<Application name="NOTIFY_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.6</MinHeapMemoryWt>
+				<MinHeapReq>50mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>800mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_COMMON_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>500mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="PERF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>800mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="TMF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>.80</MinPermWt>
+				<MaxPermWt>3.12</MaxPermWt>
+				<MaxPermBarLine>200mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="HOTSTANDBY_SERVER" enabled="false">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>50mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>1.5</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+		</Configuration>
+		
+								<!-- 20 GB Machine with Coresidency installation/Default Calculations -->
+		<Configuration id="20GB Machine Configuration" order="5" memselection="40 gb" memoryband="16-20 gb" osreservation="0kb" mysqlreservation="0mb" divider="2" disablereservation="false">
+			<Application name="NAMING_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>50mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>1.5</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="ACTIVE_MQ" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>12.5</MinHeapMemoryWt>
+				<MinHeapReq>256mb</MinHeapReq>
+				<MaxHeapBarLine>500mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			
+			<Application name="NOTIFY_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.6</MinHeapMemoryWt>
+				<MinHeapReq>50mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>800mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_COMMON_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>500mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="PERF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>800mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="TMF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>.80</MinPermWt>
+				<MaxPermWt>3.12</MaxPermWt>
+				<MaxPermBarLine>200mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="HOTSTANDBY_SERVER" enabled="false">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>50mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>1.5</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+		</Configuration>
+
+						<!-- 32 GB Machine with Coresidency installation/Default Calculations -->
+		<Configuration id="32GB Machine Configuration" order="6" memselection="64 gb" memoryband="20-32 gb" osreservation="0kb" mysqlreservation="0mb" divider="2" disablereservation="false">
+			<Application name="NAMING_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>50mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>1.5</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="ACTIVE_MQ" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>12.5</MinHeapMemoryWt>
+				<MinHeapReq>256mb</MinHeapReq>
+				<MaxHeapBarLine>500mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			
+			<Application name="NOTIFY_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.6</MinHeapMemoryWt>
+				<MinHeapReq>50mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>800mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_COMMON_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>500mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="PERF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>800mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="TMF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>.80</MinPermWt>
+				<MaxPermWt>3.12</MaxPermWt>
+				<MaxPermBarLine>200mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="HOTSTANDBY_SERVER" enabled="false">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>50mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>1.5</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+		</Configuration>
+
+						<!-- 36 GB Machine with Coresidency installation/Default Calculations -->
+		<Configuration id="36GB Machine Configuration" order="7" memselection="72 gb" memoryband="32-36 gb" osreservation="0kb" mysqlreservation="0mb" divider="2" disablereservation="false">
+			<Application name="NAMING_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>50mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>1.5</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="ACTIVE_MQ" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>12.5</MinHeapMemoryWt>
+				<MinHeapReq>256mb</MinHeapReq>
+				<MaxHeapBarLine>500mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			
+			<Application name="NOTIFY_SERVICE" enabled="false">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.6</MinHeapMemoryWt>
+				<MinHeapReq>50mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>800mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			<Application name="EMS_COMMON_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>12.5</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>500mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="PERF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>50</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>800mb</MaxHeapBarLine>
+				<MinPermWt>1.25</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+			
+			
+			<Application name="TMF_DOMAIN" enabled="true">
+				<MaxHeapMemoryWt>25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>3.12</MinHeapMemoryWt>
+				<MinHeapReq>100mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>.80</MinPermWt>
+				<MaxPermWt>3.12</MaxPermWt>
+				<MaxPermBarLine>200mb</MaxPermBarLine>
+			</Application>
+
+
+			<Application name="HOTSTANDBY_SERVER" enabled="false">
+				<MaxHeapMemoryWt>6.25</MaxHeapMemoryWt>
+				<MinHeapMemoryWt>1.8</MinHeapMemoryWt>
+				<MinHeapReq>50mb</MinHeapReq>
+				<MaxHeapBarLine>200mb</MaxHeapBarLine>
+				<MinPermWt>1.5</MinPermWt>
+				<MaxPermWt>3.13</MaxPermWt>
+				<MaxPermBarLine>128mb</MaxPermBarLine>
+			</Application>
+		</Configuration>
+
+	</Installation>
+
+
+	<Installation mode="CLUSTER" processing_mode="memselection">
+	</Installation>
+</Applications>
