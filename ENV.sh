@@ -1,13 +1,24 @@
 path=$(echo `pwd`)
+declare -A GenARGAR
+export type
+export tobuild
+export frombuild
 
+#Source all functions here:
 . $path/func/DownBuild.sh
 . $path/func/ReadDB.sh
+. $path/func/SerStop.sh
+. $path/func/RemMysql.sh
+
 
 echo 'Enter Upgrade Name'
 read UpgName
 
 echo 'Enter Mode No. : Co-res/Standalone (1/2)'
 read mode
+export mode
+
+GenARGAR(IMode)=$mode
 
 echo 'Enter no of EMS'
 read Eno
@@ -150,8 +161,8 @@ echo "ELen : $Elen"
 
 for (( x=0; x<$Elen; x++ ))
 do
-echo "Passing :  $x"
-#DBuild $x &
+echo "Passing :  ${IPAR[$x]} and $tobuild to DBBuild"
+DBuild ${IPAR[$x]} $tobuild &
 done
 
 wait
@@ -174,6 +185,33 @@ rm -rf /home/ems/DBUpgrade
 mkdir /home/ems/DBUpgrade
 EOF
 
+#Move the correct DBs to the Correct IPs
+echo "Transfering DB to remote locations"
 sshpass -f fsshpass scp -r $path/DB/$g root@${IPDBPair[$g]}:/home/ems/DBUpgrade/
 
+
+#Stop services in all IPS
+echo "Stopping EMS/NMS in remote locations"
+for (( y=0; y<$Elen; y++ ))
+do
+fSerStop ${IPAR[$y]} &
 done
+wait
+#Stop mysql and uninstall in all IPs
+echo "Uninstalling mysql in all servers"
+for (( z=0; z<$Elen; z++ ))
+do
+fRemMysql ${IPAR[$z]} &
+done
+wait
+
+
+#Download from Build to install DB server
+for (( x=0; x<$Elen; x++ ))
+do
+echo "Passing :  ${IPAR[$x]} and $frombuild to DBBuild"
+DBuild ${IPAR[$x]} $frombuild &
+done
+
+wait
+

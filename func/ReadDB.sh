@@ -97,6 +97,7 @@ echo "key  : $o and value : ${IPenms[$o]}"
         o='nmsdb.sql'
 	IPDBPair[$o]=${IPAR[0]} #Pair NMS IP to NMS DB file
         NmsDbems=$(grep 'INSERT INTO `EMS` VALUES' $o) #NmsDbems contains the sql contents of EMS extracted from NMS DB
+        Nh2=$(grep 'INSERT INTO `TOR` VALUES' $o | cut -d\' -f12)
 	echo "IP: ${IPDBPair[$o]}"
   elif [[ ${IPenms[$o]} = 'emsdb' ]]
   then
@@ -106,6 +107,8 @@ echo "key  : $o and value : ${IPenms[$o]}"
 	echo "IP: ${IPDBPair[$o]}"
 	ename=$(grep 'INSERT INTO `TOR` VALUES' $o |rev | cut -d\' -f2 | rev)
 	Enar=("${Enar[@]}" $ename)
+        tp=$(grep 'INSERT INTO `TOR` VALUES' $o | rev | cut -d',' -f3 | rev) 
+	Eh2=$(grep 'INSERT INTO `TOR` VALUES' $o | cut -d\' -f12)
    fi
 
 echo "EMS array: ${Enar[@]}"
@@ -132,7 +135,7 @@ echo "Duplicate EMS DBs present"
 echo "exit 1"
 fi
 
-res="${NmsDbems//[^)]}"
+res="${NmsDbems//[^)]}" #Count no of ) in string
 echo "no of ) ${#res}"
 
 Emsnamefromnms3=() #This array will contain all the EMS names extracted from NMS DB
@@ -171,3 +174,36 @@ done
 
 cd ..
 }
+
+#Check if EMS is SDH or SONET, export out the type
+
+if [[ $tp = 'SONET' ]]
+then
+ 	echo "Type is SONET"
+        type=SONET
+elif [[ $tp = 'SDH' ]]
+then
+        echo "Type is SDH"
+        type=SDH 
+else
+       echo "Type is incorrect"
+fi
+
+GenARGAR(Type)=$type
+
+#Extract Build info of DBs, Check if NMS release = EMS Release, Export frombuild
+
+Nb1=$(echo $Nh2 | sed -n 's/^.*Release_/''/p')
+echo "NMS From Release $Nb1"
+Eb1=$(echo $Eh2 | sed -n 's/^.*Release_/''/p')
+echo "EMS From Release $Eb1"
+
+if [[ $Nb1 = $Eb1 ]]
+then
+echo "NMS From Release = EMS From Release"
+else
+echo "WARNING! NMS != EMS Release"
+fi
+ 
+frombuild=$Nb1 #var exported in ENV.sh
+
