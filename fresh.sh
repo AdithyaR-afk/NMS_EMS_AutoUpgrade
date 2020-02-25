@@ -11,6 +11,7 @@ unset Mainarr
 declare -A Mainarr
 declare -A IPprio 
 declare -A VirIPlist
+Virstr=''
 Mainlist=()
 declare -A Mainmap
 IPfromstring=()
@@ -85,10 +86,12 @@ fi
 
 #Download corresponding builds in all servers
 for j in ${!Mainmap[@]}
-do
-	if [[ "$j" != "${VirIPlist[0]}" &&  "$j" != "${VirIPlist[1]}" ]]       #Ignore for Virtual ips
+do  
+	echo "Input: $j"
+	echo $Virstr | grep "$j"
+	if [[ $? -ne 0 ]]       #Ignore for Virtual ips
         then
-	echo "pass"	
+	echo "pass : $j"	
 #	DBuild $Israd $iip $bldvar $radbld &
 	fi
 done
@@ -96,7 +99,8 @@ wait
 
 for iip in ${!Mainmap[@]}
 do
-	if [[ "$iip" != "${VirIPlist[0]}" &&  "$iip" != "${VirIPlist[1]}" ]]       #Ignore for Virtual ips
+	echo $Virstr | grep "$iip"
+	if [[ $? -ne 0 ]]       #Ignore for Virtual ips
 	then
 		fethinter $iip #Mainarr[interface] set here for each ip
 		
@@ -209,7 +213,12 @@ do
 	fi
 echo "IP: $iip Mode: $getmode \n"
 #echo "${Mainarr[@]}\n"
-sshpass -f fsshpass ssh -o StrictHostKeyChecking=no root@$iip "bash -s" < ./puthis.sh "${Mainarr[@]}"
+echo $Virstr | grep "$iip"
+if [[ $? -ne 0 ]]       #Ignore for Virtual ips
+then
+	sshpass -f fsshpass ssh -o StrictHostKeyChecking=no root@$iip "bash -s" < ./eexp.sh "${Mainarr[@]}"
+fi
+#echo "Virtualip list:  $Virstr"
 echo " "
 done	
 }

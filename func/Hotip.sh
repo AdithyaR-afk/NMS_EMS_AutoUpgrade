@@ -60,7 +60,7 @@ then
 	Colist=("${IPfromstring[@]:0:$hln}")
 	hotstr=$(echo ${Colist[@]} | tr ' ' ',')
 	VirIPlist[0]=${IPfromstring[-1]}
-
+	Virstr="$Virstr ${VirIPlist[0]}"
 elif [[ $samesub -eq 0 && $difsub -eq 1 ]]
 then
 	echo "Its different subnet"
@@ -95,6 +95,7 @@ then
 			h=$((h-1))
 			VirIPlist[0]=${IPfromstring[$h]}
 			VirIPlist[1]=${IPfromstring[-1]}
+			Virstr="$Virstr ${VirIPlist[@]}"
 			if [[ $2 = 'NMShot' ]]
 			then
 				Mainarr[TrapList]="TrapList=${VirIPlist[0]},${VirIPlist[1]}"
