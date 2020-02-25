@@ -7,7 +7,8 @@ function fHotip
 #IPfromstring=()
 #Colist=()
 #hotstr=''
-
+echo "Hotip fir arg: $1"
+echo "Hotip sec arg: $2"
 local alen
 local prio
 usrinp=$(echo $1)
@@ -16,6 +17,7 @@ spacecount=$(echo $usrinp | tr -cd ' \t' | wc -c)
 no=$((spacecount+1))
 a=$((no-1))
 echo "Spacecount: $spacecount"
+unset IPfromstring
 while (( $no > 0 ))
 do
 IPfromstring[$a]=$(echo $usrinp | cut -d' ' -f$no)
@@ -140,7 +142,8 @@ for y in ${Colist[@]}
 do
 if [[ "$y" != "${VirIPlist[0]}" &&  "$y" != "${VirIPlist[1]}" ]]
 then
-	
+	echo "Check from here"
+	echo "y: $y and 2: $2"	
 	Mainmap[$y]="$2 ${Mainarr[Hotsubtype]}"	
 	IPprio[$y]=$prio
 	prio=$((prio-1))
@@ -155,21 +158,27 @@ hotstr=$(echo $hotstr | tr ' ' ',')
 if [[ ${Mainarr[Hotsubtype]} = 'Hotsubtype=Mixedsubnet' ]]
 then 
 	for y in ${Colist[@]}
-	do
+	do	
+		echo "next step"
+		echo "y: $y"
 		Mainmap[$y]="${Mainmap[$y]} $hotstr"	
+		echo "Mainmap now: ${Mainmap[$y]}"
 	done
 	
 	#Build thisips and thatips and build into mainmap
 	for o in ${hotarray[@]}
 	do
+		echo "o: $o and Main[o]: ${Mainmap[$o]}"
 		subo=$(echo $o | cut -d'.' -f4 --complement)
 		if [[ $subo = $filt1 ]]
 		then
+			
 			Mainmap[$o]="${Mainmap[$o]} ${VirIPlist[0]} ${subnetmap[$filt1]} ${VirIPlist[1]} ${subnetmap[$filt2]}"       
-		
+			echo "after o: $o and ${Mainmap[$o]}"
 		elif [[ $subo = $filt2 ]]
 		then
 			Mainmap[$o]="${Mainmap[$o]} ${VirIPlist[1]} ${subnetmap[$filt2]} ${VirIPlist[0]} ${subnetmap[$filt1]}"
+			echo "after o: $o and ${Mainmap[$o]}"
 		fi
 	done
 
@@ -189,4 +198,5 @@ then
 		Mainmap[$y]="${Mainmap[$y]} $hotstr"
 	done	
 fi
+unset Colist
 }	

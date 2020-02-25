@@ -1,10 +1,12 @@
 #!/bin/bash
+function ffresh
+{
 #First input argument should be installation type, second is NMS ips, ems ips will be passed thru emsMap globally
 . ./func/Hotip.sh
 . ./config.sh
 . ./func/ethinter.sh
 
-echo "poor ${emsMap[@]}"
+echo "poor ${!emsMap[@]} and ${emsMap[@]}"
 unset Mainarr
 declare -A Mainarr
 declare -A IPprio 
@@ -42,11 +44,15 @@ then
 elif [[ $1 = 'NhotStan' ]] #Standalone mode with nms hotstandby
 then
 	echo "in this block"
+         echo "2: $2"
+	set -x	
 	fHotip "$2" 'NMShot'
+	set +x
 	echo "${!emsMap[@]}"
-	for f in ${!emsMap[@]}
+	for f in "${!emsMap[@]}"
 	do
-		if [[ ${emsMap[$f]} = 'Ishot' ]]
+		echo $f	
+		if [[ "${emsMap[$f]}" = 'Ishot' ]]
 		then
 			fHotip "$f" 'EMShot'
 		
@@ -54,15 +60,16 @@ then
 		echo "is this happening"
 		Mainmap[$f]="EMSnothot"
 		fi
+	
 	done
 
 elif [[ $1 = 'Stan' ]]
 then
 	Mainarr[TrapList]="TrapList=$2"
 	Mainmap[$2]=NMSnothot
-	for f in ${!emsMap[@]}
+	for f in "${!emsMap[@]}"
         do
-                if [[ ${emsMap[$f]} = 'Ishot' ]]
+                if [[ "${emsMap[$f]}" = 'Ishot' ]]
                 then
                         fHotip "$f" 'EMShot'
                 
@@ -94,11 +101,18 @@ do
 		fethinter $iip #Mainarr[interface] set here for each ip
 		
 		#get Mode
-		val=${Mainmap[$iip]}
+		set -x
+		val="${Mainmap[$iip]}"
 		getmode=$(echo $val | cut -d' ' -f1)
+		set +x
 		if [[ $getmode = NMShot ]]
 		then
-			Mainarr[IMode]="IMode=1"
+			if [[ $rflag -eq 1 ]]
+			then
+				Mainarr[IMode]="IMode=5"
+			else
+				Mainarr[IMode]="IMode=2"
+			fi
 			Mainarr[NMSIMode]="NMSIMode=1"
 			Mainarr[IsHot]="IsHot=y"
 			Mainarr[Hotprio]="Hotprio=${IPprio[$iip]}"
@@ -133,14 +147,20 @@ do
 		
 		elif [[ $getmode = NMSnothot ]]
 		then
-			Mainarr[IMode]="IMode=1"
+			if [[ $rflag -eq 1 ]]
+                        then
+                                Mainarr[IMode]="IMode=5"
+                        else
+                                Mainarr[IMode]="IMode=2"
+                        fi
 			Mainarr[NMSIMode]="NMSIMode=1"
 			Mainarr[IsHot]="IsHot=n"
 			Mainarr[Build]="Build=$bldvar"
 	
 		elif [[ $getmode = EMShot ]]
 		then
-			 esub=$(echo $iip | cut -d'.' -f4)
+			Mainarr[IMode]="IMode=1"
+			esub=$(echo $iip | cut -d'.' -f4)
 			Mainarr[EMSname]="EMSname=EMS-$esub"
 			Mainarr[IsHot]="IsHot=y"
                         Mainarr[Hotprio]="Hotprio=${IPprio[$iip]}"
@@ -173,6 +193,7 @@ do
 			fi
 		elif [[ $getmode = EMSnothot ]]
 		then
+			Mainarr[IMode]="IMode=1"
 			esub=$(echo $iip | cut -d'.' -f4)
                         Mainarr[EMSname]="EMSname=EMS-$esub"
 			Mainarr[IsHot]="IsHot=n"
@@ -181,6 +202,7 @@ do
 		fi
 	fi
 echo "IP: $iip Mode: $getmode \n"
-echo "${Mainarr[@]}\n"
-#sshpass -f fsshpass ssh root@$iip "bash -s" < 
+#echo "${Mainarr[@]}\n"
+sshpass -f fsshpass ssh root@$iip "bash -s" < ./puthis.sh "${Mainarr[@]}"
 done	
+}

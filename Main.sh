@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+. ./fresh.sh
 Isco=0
 Isfresh=0
 Ishot=0
@@ -12,18 +12,18 @@ Israd=0
 radbld=''
 nmshot=0
 emshot=0
-declare -gA emsMap
+declare -A emsMap
 echo $@
 
 function EHotflush
 {
 if [[ $Ishot -eq 1 ]]
 then
-	emsMap[$OPTARG]='Ishot'
+	emsMap["$OPTARG"]='Ishot'
 	Ishot=0                      #FLush Ishot for next input
 	emshot=1
 else
-	emsMap[$OPTARG]='Isnothot'
+	emsMap["$OPTARG"]='Isnothot'
 fi
 }
 function NHotflush
@@ -94,7 +94,7 @@ then
 		exit 1
 		fi
 		
-		./fresh.sh 'Cores' $Coips
+		ffresh 'Cores' $Coips
 
 	elif [[ $Isco -eq 1 && $Ishot -eq 1 ]]
 	then
@@ -111,7 +111,7 @@ then
                 exit 1
                 fi
 
-		./fresh.sh 'Cohot' $Coips
+		ffresh 'Cohot' $Coips
 		
 
 	elif [[ $Isstan -eq 1 ]]
@@ -129,12 +129,12 @@ then
                 echo "Enter proper ip after -e and -n"
                 exit 1
                 fi
-	echo "NMSIPS: $Nips and EMSIPS: ${emsMap[@]} "
+	echo "NMSIPS: $Nips and EMSIPS: ${!emsMap[@]} "
 		if [[ $nmshot -eq 1 ]]
 		then
-		(./fresh.sh 'NhotStan' "$Nips")             #Passing emsMap[] by default	
+		ffresh 'NhotStan' "$Nips"             #Passing emsMap[] by default	
 		else
-		./fresh.sh 'Stan' "$Nips"			#Passing emsMap[] by default
+		ffresh 'Stan' "$Nips"			#Passing emsMap[] by default
 		fi
 	fi
 
@@ -145,4 +145,4 @@ exit 1
 fi
 
 
-set +x
+
