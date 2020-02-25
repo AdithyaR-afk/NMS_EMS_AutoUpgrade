@@ -1,5 +1,5 @@
 #Dont Track
-/home/ems/Upgrade/NMS_EMS_AutoUpgrade/conf_file
-/home/ems/Upgrade/NMS_EMS_AutoUpgrade/fsshpass
-/home/ems/Upgrade/NMS_EMS_AutoUpgrade/config.sh
+./conf_file
+./fsshpass
+./config.sh
 

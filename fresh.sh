@@ -45,9 +45,9 @@ elif [[ $1 = 'NhotStan' ]] #Standalone mode with nms hotstandby
 then
 	echo "in this block"
          echo "2: $2"
-	set -x	
+		
 	fHotip "$2" 'NMShot'
-	set +x
+	
 	echo "${!emsMap[@]}"
 	for f in "${!emsMap[@]}"
 	do
@@ -101,10 +101,10 @@ do
 		fethinter $iip #Mainarr[interface] set here for each ip
 		
 		#get Mode
-		set -x
+		
 		val="${Mainmap[$iip]}"
 		getmode=$(echo $val | cut -d' ' -f1)
-		set +x
+		
 		if [[ $getmode = NMShot ]]
 		then
 			if [[ $rflag -eq 1 ]]
@@ -119,6 +119,7 @@ do
 			Mainarr[Build]="Build=$bldvar"
 			if [[ `echo $val | cut -d' ' -f2` = 'Hotsubtype=Mixedsubnet' ]]
                         then
+				Mainarr[Hotsubtype]="Hotsubtype=Mixedsubnet"
                                 getstr=`echo $val | cut -d' ' -f3`
                                 Mainarr[Hotips]="Hotips=$getstr"
                                 getstr=`echo $val | cut -d' ' -f4`
@@ -133,6 +134,7 @@ do
 
                         elif [[ `echo $val | cut -d' ' -f2` = 'Hotsubtype=Samesubnet' ]]
                         then
+				Mainarr[Hotsubtype]="Hotsubtype=Samesubnet"
                                 getstr=`echo $val | cut -d' ' -f3`
                                 Mainarr[Hotips]="Hotips=$getstr"
                                 getstr=`echo $val | cut -d' ' -f4`
@@ -140,6 +142,7 @@ do
 
                         elif [[ `echo $val | cut -d' ' -f2` = 'Hotsubtype=Differentsubnet' ]]
                         then
+				Mainarr[Hotsubtype]="Hotsubtype=Differentsubnet"
                                 getstr=`echo $val | cut -d' ' -f3`
                                 Mainarr[Hotips]="Hotips=$getstr"
                         fi
@@ -167,6 +170,7 @@ do
                         Mainarr[Build]="Build=$bldvar"
 			if [[ `echo $val | cut -d' ' -f2` = 'Hotsubtype=Mixedsubnet' ]]
 			then
+				Mainarr[Hotsubtype]="Hotsubtype=Mixedsubnet"
 				getstr=`echo $val | cut -d' ' -f3`
 				Mainarr[Hotips]="Hotips=$getstr"
 				getstr=`echo $val | cut -d' ' -f4`
@@ -181,6 +185,7 @@ do
 
 			elif [[ `echo $val | cut -d' ' -f2` = 'Hotsubtype=Samesubnet' ]]
 			then
+				Mainarr[Hotsubtype]="Hotsubtype=Samesubnet"
 				getstr=`echo $val | cut -d' ' -f3`
 				Mainarr[Hotips]="Hotips=$getstr"
 				getstr=`echo $val | cut -d' ' -f4`
@@ -188,6 +193,7 @@ do
 
 			elif [[ `echo $val | cut -d' ' -f2` = 'Hotsubtype=Differentsubnet' ]]
 			then
+				Mainarr[Hotsubtype]="Hotsubtype=Differentsubnet"
 				getstr=`echo $val | cut -d' ' -f3`
 				Mainarr[Hotips]="Hotips=$getstr"
 			fi
@@ -203,6 +209,7 @@ do
 	fi
 echo "IP: $iip Mode: $getmode \n"
 #echo "${Mainarr[@]}\n"
-sshpass -f fsshpass ssh root@$iip "bash -s" < ./puthis.sh "${Mainarr[@]}"
+sshpass -f fsshpass ssh -o StrictHostKeyChecking=no root@$iip "bash -s" < ./puthis.sh "${Mainarr[@]}"
+echo " "
 done	
 }
