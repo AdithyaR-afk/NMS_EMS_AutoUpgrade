@@ -8,7 +8,8 @@ function fHotip
 #Colist=()
 #hotstr=''
 
-local alen,prio
+local alen
+local prio
 usrinp=$(echo $1)
 echo "Userinp: $usrinp"
 spacecount=$(echo $usrinp | tr -cd ' \t' | wc -c)
@@ -55,7 +56,7 @@ then
 	hln=${#IPfromstring[@]}
 	hln=$((hln-1))
 	Colist=("${IPfromstring[@]:0:$hln}")
-	hotstr=$(echo $Colist | tr ' ' ',')
+	hotstr=$(echo ${Colist[@]} | tr ' ' ',')
 	VirIPlist[0]=${IPfromstring[-1]}
 
 elif [[ $samesub -eq 0 && $difsub -eq 1 ]]
@@ -63,14 +64,20 @@ then
 	echo "Its different subnet"
 	Mainarr[Hotsubtype]=Hotsubtype=Differentsubnet
 	Colist=(${IPfromstring[@]})
-	hotstr=$(echo $Colist | tr ' ' ',')
+	hotstr=$(echo ${Colist[@]} | tr ' ' ',')
+	if [[ $2 = 'NMShot' ]]
+        then
+				ll=$(echo ${Colist[@]} | tr ' ' ',')
+                                Mainarr[TrapList]="TrapList=$ll"
+        fi
+
 
 elif [[ $samesub -eq 1 && $difsub -eq 1 ]]
 then
 	echo "Its mixed subnet"
 	Mainarr[Hotsubtype]=Hotsubtype=Mixedsubnet
 	Colist=(${IPfromstring[@]})
-        hotstr=$(echo $Colist | tr ' ' ',')
+        hotstr=$(echo ${Colist[@]} | tr ' ' ',')
 	
 fi
 

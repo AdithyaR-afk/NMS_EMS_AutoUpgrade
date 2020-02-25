@@ -12,7 +12,7 @@ Israd=0
 radbld=''
 nmshot=0
 emshot=0
-declare -A emsMap
+declare -gA emsMap
 echo $@
 
 function EHotflush
@@ -39,7 +39,7 @@ case $opt in
 	c) Isco=1; Coips=$OPTARG ;;
 	f) Isfresh=1;;
 	s)Isstan=1;;
-	e)Ise=1; Hotflush;;                                           #Eips=$OPTARG;;
+	e)Ise=1; EHotflush;;                                           #Eips=$OPTARG;;
 	n)Isn=1; NHotflush; Nips=$OPTARG;;
 	h)Ishot=1;;
 	b)bopt=1;bldvar=$OPTARG;;
@@ -50,14 +50,14 @@ esac
 done
 echo $Ishot
 echo "Optind : $OPTIND"
-
+echo "bopt: $bopt"
 if [[ -z $bldvar ]]
 then
 echo "Enter proper build after -b"
 exit 1
 fi
 
-if [[ -z $radbld ]]
+if [[ $Israd -eq 1 && -z $radbld ]]
 then
 echo "Enter proper build after -r"
 exit 1
@@ -117,7 +117,8 @@ then
 	elif [[ $Isstan -eq 1 ]]
 	then
 	echo "Installing Standalone mode without Hotstandby"
-		if [[ -z $emsMap || -z $Nips ]]
+		echo "emsmap: $emsMap and Nips: $Nips"
+		if [[ -z ${emsMap[@]} || -z $Nips ]]
 		then
 		echo "Enter ems ips within quotes after -e and nms ips within quotes after -n"
 		exit 1
@@ -128,13 +129,14 @@ then
                 echo "Enter proper ip after -e and -n"
                 exit 1
                 fi
-	echo "NMSIPS: $Nips and EMSIPS: $Eips"
+	echo "NMSIPS: $Nips and EMSIPS: ${emsMap[@]} "
 		if [[ $nmshot -eq 1 ]]
 		then
-		./fresh.sh 'NhotStan' $Nips             #Passing emsMap[] by default	
+		(./fresh.sh 'NhotStan' "$Nips")             #Passing emsMap[] by default	
 		else
-		./fresh.sh 'Stan' $Nips			#Passing emsMap[] by default
+		./fresh.sh 'Stan' "$Nips"			#Passing emsMap[] by default
 		fi
+	fi
 
 elif [[ $Isfresh -eq 0 ]]
 then
