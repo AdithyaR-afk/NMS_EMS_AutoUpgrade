@@ -101,6 +101,10 @@ expect  {
 
                                                                 exp_continue
                                                                }
+	\"Already existing MySQL needs to be uninstalled. Do you want to proceed?\"      { send \"y\r\"
+
+                                                                			exp_continue
+                                                               				}
      \"Please enter unique EMS Name\"                          { send \"$emsname\r\"
 
                                                                 exp_continue

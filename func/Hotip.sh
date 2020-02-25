@@ -50,11 +50,11 @@ do
 		
 	done
 done
-
+Colist=()
 if [[ $samesub -eq 1 && $difsub -eq 0 ]]
 then
 	echo "Its samesubnet"
-	Mainarr[Hotsubtype]=Hotsubtype=Samesubnet
+	Mainarr[Hotsubtype]=Hotsubtype=SameSubnet
 	hln=${#IPfromstring[@]}
 	hln=$((hln-1))
 	Colist=("${IPfromstring[@]:0:$hln}")
@@ -64,7 +64,7 @@ then
 elif [[ $samesub -eq 0 && $difsub -eq 1 ]]
 then
 	echo "Its different subnet"
-	Mainarr[Hotsubtype]=Hotsubtype=Differentsubnet
+	Mainarr[Hotsubtype]=Hotsubtype=DifferentSubnet
 	Colist=(${IPfromstring[@]})
 	hotstr=$(echo ${Colist[@]} | tr ' ' ',')
 	if [[ $2 = 'NMShot' ]]
@@ -77,14 +77,14 @@ then
 elif [[ $samesub -eq 1 && $difsub -eq 1 ]]
 then
 	echo "Its mixed subnet"
-	Mainarr[Hotsubtype]=Hotsubtype=Mixedsubnet
+	Mainarr[Hotsubtype]=Hotsubtype=MixedSubnet
 	Colist=(${IPfromstring[@]})
         hotstr=$(echo ${Colist[@]} | tr ' ' ',')
 	
 fi
 
 #If Mixed Mode fish out the multiple Virtual IPs
-if [[ ${Mainarr[Hotsubtype]} = 'Hotsubtype=Mixedsubnet' ]]
+if [[ ${Mainarr[Hotsubtype]} = 'Hotsubtype=MixedSubnet' ]]
 then
 	 subi=$(echo ${IPfromstring[0]} | cut -d'.' -f4 --complement)                   #Get Subnet of first IP
 	for (( h=1; h<${#IPfromstring[@]};h++ ))
@@ -133,18 +133,26 @@ then
 	subnetmap[$filt1]=$Samestr
 	subnetmap[$filt2]=$Diffstr
 fi
+
+if [[ $2 = EMShot ]]
+then
+	subetr=$(echo ${Colist[0]} | cut -d'.' -f4)
+	Mainarr[EMSname]="EMSname=EMS-$subetr"
+fi
+
 prio=9
 
 hotstr=''
 hotarray=()
 o=0
 #Start building mainmap, filtering out the virtual ips
+echo "Colist: ${Colist[@]}"
 for y in ${Colist[@]}
 do
 if [[ "$y" != "${VirIPlist[0]}" &&  "$y" != "${VirIPlist[1]}" ]]
 then
 	echo "Check from here"
-	echo "y: $y and 2: $2"	
+	echo "y: $y and 2: $2 and prio: $prio"	
 	Mainmap[$y]="$2 ${Mainarr[Hotsubtype]}"	
 	IPprio[$y]=$prio
 	prio=$((prio-1))
@@ -156,7 +164,7 @@ done
 hotstr=$(echo $hotstr | tr ' ' ',')
 
 #Add virtual ip info,build Mainmap futher, finally
-if [[ ${Mainarr[Hotsubtype]} = 'Hotsubtype=Mixedsubnet' ]]
+if [[ ${Mainarr[Hotsubtype]} = 'Hotsubtype=MixedSubnet' ]]
 then 
 	for y in ${Colist[@]}
 	do	
@@ -183,7 +191,7 @@ then
 		fi
 	done
 
-elif [[ ${Mainarr[Hotsubtype]} = 'Hotsubtype=Samesubnet' ]]
+elif [[ ${Mainarr[Hotsubtype]} = 'Hotsubtype=SameSubnet' ]]
 then
 	for y in ${Colist[@]}
 	do
@@ -191,7 +199,7 @@ then
 		Mainmap[$y]="${Mainmap[$y]} $hotstr ${VirIPlist[0]}"
 	done
 
-elif [[ ${Mainarr[Hotsubtype]} = 'Hotsubtype=Differentsubnet' ]]
+elif [[ ${Mainarr[Hotsubtype]} = 'Hotsubtype=DifferentSubnet' ]]
 then
 	for y in ${Colist[@]}
 	do

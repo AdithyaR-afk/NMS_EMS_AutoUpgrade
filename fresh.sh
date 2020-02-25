@@ -5,6 +5,7 @@ function ffresh
 . ./func/Hotip.sh
 . ./config.sh
 . ./func/ethinter.sh
+. ./func/DownBuild.sh
 
 echo "poor ${!emsMap[@]} and ${emsMap[@]}"
 unset Mainarr
@@ -83,23 +84,23 @@ fi
 
 #MainPipeline. Extract all and convert
 . ./config.sh
-
+echo "Israd: $Israd bldvar: $bldvar radbld: $radbld"
 #Download corresponding builds in all servers
-for j in ${!Mainmap[@]}
+for j in "${!Mainmap[@]}"
 do  
 	echo "Input: $j"
-	echo $Virstr | grep "$j"
+	echo $Virstr | grep -w "$j"
 	if [[ $? -ne 0 ]]       #Ignore for Virtual ips
         then
 	echo "pass : $j"	
-#	DBuild $Israd $iip $bldvar $radbld &
+	#DBuild $Israd $j $bldvar $radbld &
 	fi
 done
 wait
 
 for iip in ${!Mainmap[@]}
 do
-	echo $Virstr | grep "$iip"
+	echo $Virstr | grep -w "$iip"
 	if [[ $? -ne 0 ]]       #Ignore for Virtual ips
 	then
 		fethinter $iip #Mainarr[interface] set here for each ip
@@ -121,9 +122,9 @@ do
 			Mainarr[IsHot]="IsHot=y"
 			Mainarr[Hotprio]="Hotprio=${IPprio[$iip]}"
 			Mainarr[Build]="Build=$bldvar"
-			if [[ `echo $val | cut -d' ' -f2` = 'Hotsubtype=Mixedsubnet' ]]
+			if [[ `echo $val | cut -d' ' -f2` = 'Hotsubtype=MixedSubnet' ]]
                         then
-				Mainarr[Hotsubtype]="Hotsubtype=Mixedsubnet"
+				Mainarr[Hotsubtype]="Hotsubtype=MixedSubnet"
                                 getstr=`echo $val | cut -d' ' -f3`
                                 Mainarr[Hotips]="Hotips=$getstr"
                                 getstr=`echo $val | cut -d' ' -f4`
@@ -136,17 +137,17 @@ do
                                 Mainarr[MixedotherIPs]="MixedotherIPs=$getstr"
                                 #Mainarr[TrapList] set in Hotip.sh
 
-                        elif [[ `echo $val | cut -d' ' -f2` = 'Hotsubtype=Samesubnet' ]]
+                        elif [[ `echo $val | cut -d' ' -f2` = 'Hotsubtype=SameSubnet' ]]
                         then
-				Mainarr[Hotsubtype]="Hotsubtype=Samesubnet"
+				Mainarr[Hotsubtype]="Hotsubtype=SameSubnet"
                                 getstr=`echo $val | cut -d' ' -f3`
                                 Mainarr[Hotips]="Hotips=$getstr"
                                 getstr=`echo $val | cut -d' ' -f4`
                                 Mainarr[VirIP]="VirIP=$getstr"
 
-                        elif [[ `echo $val | cut -d' ' -f2` = 'Hotsubtype=Differentsubnet' ]]
+                        elif [[ `echo $val | cut -d' ' -f2` = 'Hotsubtype=DifferentSubnet' ]]
                         then
-				Mainarr[Hotsubtype]="Hotsubtype=Differentsubnet"
+				Mainarr[Hotsubtype]="Hotsubtype=DifferentSubnet"
                                 getstr=`echo $val | cut -d' ' -f3`
                                 Mainarr[Hotips]="Hotips=$getstr"
                         fi
@@ -168,13 +169,12 @@ do
 		then
 			Mainarr[IMode]="IMode=1"
 			esub=$(echo $iip | cut -d'.' -f4)
-			Mainarr[EMSname]="EMSname=EMS-$esub"
 			Mainarr[IsHot]="IsHot=y"
                         Mainarr[Hotprio]="Hotprio=${IPprio[$iip]}"
                         Mainarr[Build]="Build=$bldvar"
-			if [[ `echo $val | cut -d' ' -f2` = 'Hotsubtype=Mixedsubnet' ]]
+			if [[ `echo $val | cut -d' ' -f2` = 'Hotsubtype=MixedSubnet' ]]
 			then
-				Mainarr[Hotsubtype]="Hotsubtype=Mixedsubnet"
+				Mainarr[Hotsubtype]="Hotsubtype=MixedSubnet"
 				getstr=`echo $val | cut -d' ' -f3`
 				Mainarr[Hotips]="Hotips=$getstr"
 				getstr=`echo $val | cut -d' ' -f4`
@@ -187,17 +187,17 @@ do
 				Mainarr[MixedotherIPs]="MixedotherIPs=$getstr"
 				#Mainarr[TrapList] set in Hotip.sh
 
-			elif [[ `echo $val | cut -d' ' -f2` = 'Hotsubtype=Samesubnet' ]]
+			elif [[ `echo $val | cut -d' ' -f2` = 'Hotsubtype=SameSubnet' ]]
 			then
-				Mainarr[Hotsubtype]="Hotsubtype=Samesubnet"
+				Mainarr[Hotsubtype]="Hotsubtype=SameSubnet"
 				getstr=`echo $val | cut -d' ' -f3`
 				Mainarr[Hotips]="Hotips=$getstr"
 				getstr=`echo $val | cut -d' ' -f4`
 				Mainarr[VirIP]="VirIP=$getstr"
 
-			elif [[ `echo $val | cut -d' ' -f2` = 'Hotsubtype=Differentsubnet' ]]
+			elif [[ `echo $val | cut -d' ' -f2` = 'Hotsubtype=DifferentSubnet' ]]
 			then
-				Mainarr[Hotsubtype]="Hotsubtype=Differentsubnet"
+				Mainarr[Hotsubtype]="Hotsubtype=DifferentSubnet"
 				getstr=`echo $val | cut -d' ' -f3`
 				Mainarr[Hotips]="Hotips=$getstr"
 			fi
@@ -212,11 +212,12 @@ do
 		fi
 	fi
 echo "IP: $iip Mode: $getmode \n"
-#echo "${Mainarr[@]}\n"
-echo $Virstr | grep "$iip"
+echo "${Mainarr[@]}"
+echo $Virstr | grep -w "$iip"
 if [[ $? -ne 0 ]]       #Ignore for Virtual ips
 then
-	sshpass -f fsshpass ssh -o StrictHostKeyChecking=no root@$iip "bash -s" < ./eexp.sh "${Mainarr[@]}"
+	echo "Installing in $iip"
+	sshpass -f fsshpass ssh -o StrictHostKeyChecking=no root@$iip "bash -s" < ./eexp.sh "${Mainarr[@]}" |& tee Output_${iip}.txt &
 fi
 #echo "Virtualip list:  $Virstr"
 echo " "
