@@ -1,0 +1,412 @@
+IsHot=n interface=enp11s0f1 Concurlogin=true NMSIMode=1 Build=7_6_0_a1 Mode=SDH emspass=iltwat TrapList=192.168.228.181 IMode=2 Mysqlpass=Tejas@123
+Key: IsHot and its value: n
+Key: Concurlogin and its value: true
+Key: interface and its value: enp11s0f1
+Key: NMSIMode and its value: 1
+Key: Build and its value: 7_6_0_a1
+Key: Mode and its value: SDH
+Key: emspass and its value: iltwat
+Key: TrapList and its value: 192.168.228.181
+Key: IMode and its value: 2
+Key: Mysqlpass and its value: Tejas@123
+spawn ./install_all.sh
+
+
+Verifying privileges... [OK]
+Checking SELinux status... [OK]
+Checking firewall status... [OK]
+Installation started at Wed Feb 26 18:08:45 IST 2020
+Ethernet Interfaces present : enp0s29f0u2,enp11s0f0,enp11s0f1
+Please choose the Ethernet Interface to be used (enp0s29f0u2,enp11s0f0,enp11s0f1) [enp0s29f0u2] :enp11s0f1
+Options :
+1) Install EMS.
+2) Install NMS.
+3) Install EMS & NMS in co-residency.
+4) Install DBServer EMS.
+5) Install DBServer NMS.
+6) Install DBServer co-residency.
+7) exit.
+Enter the value for installation from above options :(1,2,3,4,5,6,7) [7]:2
+Copying the contents of the CD to /opt/Installation_Wed_Feb_26_18.08.45_IST_2020
+Extracting the contents of DependentSoftware.tgz
+Extracting the contents of EMS_Release_7_6_0_a1.tgz
+Extracting the contents of NMS_Release_7_6_0_a1.tgz
+Product : NMS
+Triggering installation of NMS
+true ./NMS_Release_7_6_0_a1/install/nms_install.sh
+
+
+*******************************************************
+*                                                     *
+        NMS 7.6.0.a1 Installation            
+*                                                     *
+*******************************************************
+
+Verifying privileges...
+OK
+
+
+Verifying mysql installation....
+
+[1] Stand alone  mode
+[2] Clustering mode
+Enter the Installation mode [1]:[1/2]1
+64 bit MYSQL found
+Needed MySQL version 5.7.22 is available
+Please specify root password for Database Server: Tejas@123
+
+Do you wish to reconfigure the MySQL password? (y/n) [n]:n
+Checking tables for MySQL upgrade...
+Restarting mysql
+
+Verifying java installation....
+
+Java version Ok 
+NMS database not found. Hence triggering fresh Installation
+
+*********************************************************************
+*                                                                   *
+        Preparing for NMS 7.6.0.a1 Installation            
+*                                                                   *
+*********************************************************************
+Installing NMS-7.6.0.a1 at /opt/nms
+
+Installing apache-tomcat 
+
+
+apache-tomcat installed successfully....
+
+
+
+Installing apache-activemq 
+
+
+apache-activemq installed successfully....
+
+*********************************************************************
+*                                                                   *
+        Now prepared for NMS 7.6.0.a1 Installation         
+*                                                                   *
+*********************************************************************
+
+
+*******************************************************
+*                                                     *
+        Now NMS 7.6.0.a1 Installing          
+*                                                     *
+*******************************************************
+
+Please enter nms application mode (SDH/SONET) [SDH] :SDH
+Mode is SDH now
+******************************************************************
+
+*        Installed successfully!!! Please wait...                 *
+
+******************************************************************
+Do you want NMS Services to run at Startup [y]: y
+
+
+error reading information on service vsftpd: No such file or directory
+Redirecting to /bin/systemctl start vsftpd.service
+Failed to start vsftpd.service: Unit not found.
+Please enter the password for user ems : 
+Changing password for user ems.
+passwd: all authentication tokens updated successfully.
+Do you want to install application in Hot Standby mode [n]: n
+Stopping MySQL...
+Starting MySQL...
+************************************************************
+*                                                          *
+        Finalizing NMS 7.6.0.a1 Installation      
+*                                                          *
+************************************************************
+Checking if configuration files are present
+All required files for HTTPS config are present, configuring tomcat with HTTPS
+Generating Cert...
+Generating a 2048 bit RSA private key
+..........................................+++
+................................................................................................+++
+writing new private key to '/opt/nms/release/config/nms.key'
+-----
+Signature ok
+subject=/C=IN/ST=Karnataka/L=Bengaluru/O=Tejas Networks Ltd/OU=nms/emailAddress=tejnms@india.tejasnetworks.com/CN=tejnms.com
+Getting CA Private Key
+Importing keystore /opt/nms/release/config/nms.p12 to /opt/nms/release/config/nms.jks...
+Entry for alias 1 successfully imported.
+Import command completed:  1 entries successfully imported, 0 entries failed or cancelled
+
+Warning:
+The JKS keystore uses a proprietary format. It is recommended to migrate to PKCS12 which is an industry standard format using "keytool -importkeystore -srckeystore /opt/nms/release/config/nms.jks -destkeystore /opt/nms/release/config/nms.jks -deststoretype pkcs12".
+Replacing Tomcat configurations with HTTPS
+Adding nms certificate authority to java trusted certs...
+Importing keystore /opt/nms/release/config/nmsCA.jks to /usr/java/jdk1.8.0_171/bin/../jre/lib/security/cacerts...
+Warning: Overwriting existing alias nmsca in destination keystore
+Entry for alias nmsca successfully imported.
+Import command completed:  1 entries successfully imported, 0 entries failed or cancelled
+Done adding certificate authority
+[0;32mHTTPS configuration for Tomcat done successfully[0m
+Update Tomcat context configuration Start
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/apache-tomcat-8.0.30/conf/context.xml converted
+Update Tomcat context configuration End
+setting nbi webserver started
+Deployingwebnms
+/opt/Installation_Wed_Feb_26_18.08.45_IST_2020/NMS_Release_7_6_0_a1/install
+Deployingnmsnbi
+/opt/Installation_Wed_Feb_26_18.08.45_IST_2020/NMS_Release_7_6_0_a1/install
+setting nbi webserver ended
+192.168.228.181
+/opt/nms/release
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/config/hibernate.cfg.xml converted
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/data/srv/server.properties converted
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/config/server.properties converted
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/bin/saveLogs.sh converted
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/bin/alarm_resync.sh converted
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/bin/alarm_mistmatch.sh converted
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/config/common.properties converted
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/config/ApplicationResource.properties converted
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/config/ApplicationProperties.properties converted
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/config/jndi.properties converted
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/config/adapter.properties converted
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/config/AAA.properties converted
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/bin/runModules.pl converted
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/data/srv/server.properties converted
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/config/server.properties converted
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/config/server.properties converted
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/data/srv/server.properties converted
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/config/hibernate.cfg.xml converted
+/opt/Installation_Wed_Feb_26_18.08.45_IST_2020/NMS_Release_7_6_0_a1/install
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+jar signed.
+
+Warning: 
+No -tsa or -tsacert is provided and this jar is not timestamped. Without a timestamp, users may not be able to validate this jar after the signer certificate's expiration date (2030-02-08) or after any future revocation date.
+/opt/Installation_Wed_Feb_26_18.08.45_IST_2020/NMS_Release_7_6_0_a1/install
+Updating ApacheMQ configuration Start
+Standalone NMS Mode Apache MQ Configuration
+Enabling ActiveMQ Console Audit
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/apache-activemq-5.13.0/bin/env converted
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/apache-activemq-5.13.0/bin/env converted
+Enabling webconsole for ActiveMQ
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/apache-activemq-5.13.0/conf/activemq.xml converted
+Updating ApacheMQ configuration Stop
+Disabling Inactivity Monitor
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/apache-activemq-5.13.0/conf/activemq.xml converted
+Warning: replace is deprecated and will be removed in a future version.
+conf/hibernate.cfg.xml converted
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/apache-tomcat-8.0.30/webapps/webnms/WEB-INF/classes/hibernate.cfg.xml converted
+adding: conf/hibernate.cfg.xml(in = 2037) (out= 768)(deflated 62%)
+/opt/Installation_Wed_Feb_26_18.08.45_IST_2020/NMS_Release_7_6_0_a1/install
+Installing  tools
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/bin/saveLogs.sh converted
+creating database nmsdb
+creating metabase db
+initialising aaa tables
+log4j:WARN No appenders could be found for logger (org.jboss.logging).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+Wed Feb 26 18:10:25 IST 2020 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Wed Feb 26 18:10:26 IST 2020 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Checking for Kannel Installation
+Kannel is already installed
+
+
+Enabling user command history logging
+
+
+Command already exist!!!
+
+Enabling archive logfile compression
+
+Setting log rotation to 8 weeks
+
+setting already exist!!!
+
+Restarting logrotate service
+Redirecting to /bin/systemctl restart rsyslog.service
+Enabling core dump creation on process crash
+******************************************************************
+
+*        Finalization completed successfully!!!                   *
+
+******************************************************************
+initialising nms database
+This step may take long time please be patient
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/config/hibernate.cfg.xml converted
+Wed Feb 26 18:10:38 IST 2020 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Wed Feb 26 18:10:41 IST 2020 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Warning: replace is deprecated and will be removed in a future version.
+/opt/nms/release/config/hibernate.cfg.xml converted
+mysql: [Warning] Using a password on the command line interface can be insecure.
+******************************************************************
+
+*        Installation completed successfully !!!   Thanks.        *
+
+******************************************************************
+Copy nms license file under /opt/nms/release/license/ before starting nms. Press Enter to continue...
+Installation completed at Wed Feb 26 18:11:15 IST 2020
+[root@RHEL7u5-181 7_6_0_a1]# 

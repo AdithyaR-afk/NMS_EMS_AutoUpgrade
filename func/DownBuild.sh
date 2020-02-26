@@ -64,8 +64,8 @@ fi
 bflag=0 #Check if complete build present or not
 
 
-
-if [ sshpass -f fsshpass ssh -o StrictHostKeyChecking=no root@$ix "[ -d /home/ems/$bld ]" ]
+sshpass -f fsshpass ssh -o StrictHostKeyChecking=no root@$ix "[ -d /home/ems/$bld ]"
+if [[ $? -eq 0  ]]
 then
 echo 'build directory exists'
 
