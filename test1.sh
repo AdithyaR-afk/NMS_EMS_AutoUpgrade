@@ -1,5 +1,5 @@
 #!/bin/bash
 set -x
 . ./func/DownBuild.sh
-DBuild 0 192.168.228.181 7_6_0_a1
+DBuild 1 192.168.3.106 7_5_0_a18 7_5_0_a5
 set +x

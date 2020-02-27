@@ -74,7 +74,7 @@ then
         fi
 	if [[ $Isco -eq 0 && $Isstan -eq 0 ]]
 	then
-		echo "Specify proper arguments like -c 'Ips'"
+		echo "Specify proper arguments like -fc 'Ips' or -fsn 'Ips' -e 'Ips'"
 		exit 1
 	fi
 	
@@ -94,7 +94,7 @@ then
 		exit 1
 		fi
 		
-		ffresh 'Cores' $Coips
+		ffresh 'Cores' "$Coips"
 
 	elif [[ $Isco -eq 1 && $Ishot -eq 1 ]]
 	then
@@ -111,7 +111,7 @@ then
                 exit 1
                 fi
 
-		ffresh 'Cohot' $Coips
+		ffresh 'Cohot' "$Coips"
 		
 
 	elif [[ $Isstan -eq 1 ]]

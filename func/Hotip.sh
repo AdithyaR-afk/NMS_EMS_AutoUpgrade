@@ -96,7 +96,7 @@ then
 			VirIPlist[0]=${IPfromstring[$h]}
 			VirIPlist[1]=${IPfromstring[-1]}
 			Virstr="$Virstr ${VirIPlist[@]}"
-			if [[ $2 = 'NMShot' ]]
+			if [[ $2 = 'NMShot' || $2 = 'Cohot' ]]
 			then
 				Mainarr[TrapList]="TrapList=${VirIPlist[0]},${VirIPlist[1]}"
 			fi
@@ -134,7 +134,7 @@ then
 	subnetmap[$filt2]=$Diffstr
 fi
 
-if [[ $2 = EMShot ]]
+if [[ $2 = EMShot || $2 = Cohot ]]
 then
 	subetr=$(echo ${Colist[0]} | cut -d'.' -f4)
 	Mainarr[EMSname]="EMSname=EMS-$subetr"

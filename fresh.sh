@@ -6,8 +6,8 @@ function ffresh
 . ./config.sh
 . ./func/ethinter.sh
 . ./func/DownBuild.sh
+. ./func/CheckDependency.sh
 
-echo "poor ${!emsMap[@]} and ${emsMap[@]}"
 unset Mainarr
 declare -A Mainarr
 declare -A IPprio 
@@ -18,34 +18,21 @@ declare -A Mainmap
 IPfromstring=()
 Colist=()
 hotstr=''
-echo "wtf is $1"
-echo "atleast here"
-if [[ $1 = 'Cores' ]]  #Co-resident Mode
+
+if [[ $1 = 'Cores' ]]  #Co-resident Mode without Hotstandby
 then
-	echo " wrong block boi"
-	if [[ $3 -eq 0 ]] #No Hot mode
-	then
-	Ipstr=$(echo $4)
-  	Mainarr[IsHot]="IsHot=n"
-	Mainlist=("$Ipstr")
-	else		#CoHot mode
-	fHotip "$4"
-	Mainlist=(${Colist[@]}p)
-	 Mainarr[IsHot]="IsHot=y"
-	Mainarr[Hotips]="Hotips=$hotstr"
-	fi
-	if [[ ${Mainarr[Hotsubtype]} = "Hotsubtype=Samesubnet" ]]
-	then
-		Mainarr[VirIP]="VirIP=${IPfromstring[-1]}"		
-		
-		
-				
-		 
-	fi
+	echo "Installing in Co-resident mode"
+	f=$(echo $2)
+	Mainmap[$f]="Coresnothot"
+
+elif [[ $1 = 'Cohot' ]]  #Co-resident Mode with Hotstandby
+then
+        echo "Installing in Co-resident mode"
+	fHotip "$2" 'Cohot'
 
 elif [[ $1 = 'NhotStan' ]] #Standalone mode with nms hotstandby
 then
-	echo "in this block"
+	
          echo "2: $2"
 		
 	fHotip "$2" 'NMShot'
@@ -92,8 +79,9 @@ do
 	echo $Virstr | grep -w "$j"
 	if [[ $? -ne 0 ]]       #Ignore for Virtual ips
         then
-	echo "pass : $j"	
-	#DBuild $Israd $j $bldvar $radbld &
+	echo "pass : $j"
+	fCheckDependency $j	
+	DBuild $Israd $j $bldvar $radbld &
 	fi
 done
 wait
@@ -112,7 +100,7 @@ do
 		
 		if [[ $getmode = NMShot ]]
 		then
-			if [[ $rflag -eq 1 ]]
+			if [[ $Israd -eq 1 ]]
 			then
 				Mainarr[IMode]="IMode=5"
 			else
@@ -155,7 +143,7 @@ do
 		
 		elif [[ $getmode = NMSnothot ]]
 		then
-			if [[ $rflag -eq 1 ]]
+			if [[ $Israd -eq 1 ]]
                         then
                                 Mainarr[IMode]="IMode=5"
                         else
@@ -208,7 +196,63 @@ do
                         Mainarr[EMSname]="EMSname=EMS-$esub"
 			Mainarr[IsHot]="IsHot=n"
 			Mainarr[Build]="Build=$bldvar"
-						
+		
+		elif [[ $getmode = "Coresnothot" ]]
+		then
+                        if [[ $Israd -eq 1 ]]
+                        then
+                                Mainarr[IMode]="IMode=6"
+                        else
+                                Mainarr[IMode]="IMode=3"
+                        fi
+			esub=$(echo $iip | cut -d'.' -f4)
+                        Mainarr[EMSname]="EMSname=EMS-$esub"
+			Mainarr[IsHot]="IsHot=n"
+                        Mainarr[Build]="Build=$bldvar"
+			
+		elif [[ $getmode = "Cohot" ]]
+		then
+			
+			if [[ $Israd -eq 1 ]]
+                        then
+                                Mainarr[IMode]="IMode=6"
+                        else
+                                Mainarr[IMode]="IMode=3"
+                        fi
+			Mainarr[IsHot]="IsHot=y"
+			Mainarr[Hotprio]="Hotprio=${IPprio[$iip]}"
+                        Mainarr[Build]="Build=$bldvar"
+                        if [[ `echo $val | cut -d' ' -f2` = 'Hotsubtype=MixedSubnet' ]]
+                        then
+                                Mainarr[Hotsubtype]="Hotsubtype=MixedSubnet"
+                                getstr=`echo $val | cut -d' ' -f3`
+                                Mainarr[Hotips]="Hotips=$getstr"
+                                getstr=`echo $val | cut -d' ' -f4`
+                                Mainarr[MixedthisVirIP]="MixedthisVirIP=$getstr"
+                                getstr=`echo $val | cut -d' ' -f5`
+                                Mainarr[MixedthisIPs]="MixedthisIPs=$getstr"
+                                getstr=`echo $val | cut -d' ' -f6`
+                                Mainarr[MixedotherVirIP]="MixedotherVirIP=$getstr"
+                                getstr=`echo $val | cut -d' ' -f7`
+                                Mainarr[MixedotherIPs]="MixedotherIPs=$getstr"
+                                #Mainarr[TrapList] set in Hotip.sh
+
+                        elif [[ `echo $val | cut -d' ' -f2` = 'Hotsubtype=SameSubnet' ]]
+                        then
+                                Mainarr[Hotsubtype]="Hotsubtype=SameSubnet"
+                                getstr=`echo $val | cut -d' ' -f3`
+                                Mainarr[Hotips]="Hotips=$getstr"
+                                getstr=`echo $val | cut -d' ' -f4`
+                                Mainarr[VirIP]="VirIP=$getstr"
+
+                        elif [[ `echo $val | cut -d' ' -f2` = 'Hotsubtype=DifferentSubnet' ]]
+                        then
+                                Mainarr[Hotsubtype]="Hotsubtype=DifferentSubnet"
+                                getstr=`echo $val | cut -d' ' -f3`
+                                Mainarr[Hotips]="Hotips=$getstr"
+                        fi
+
+					
 		fi
 	fi
 echo "IP: $iip Mode: $getmode \n"
